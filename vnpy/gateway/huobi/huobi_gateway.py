@@ -682,14 +682,20 @@ class HuobiTradeWebsocketApi(HuobiWebsocketApiBase):
         change_type = data["changeType"]
         if not change_type:
             balance = float(data["balance"])
-            frozen = balance - float(data["available"])
+            if data["available"]==None:
+                frozen = balance
+            else:
+                frozen = balance - float(data["available"])
             currency_balance[currency] = balance
 
         elif "place" in change_type:
             if "available" not in data:
                 return
             balance = currency_balance[currency]
-            frozen = balance - float(data["available"])
+            if data["available"]==None:
+                frozen = balance
+            else:
+                frozen = balance - float(data["available"])
         else:
             frozen = 0.0
             if "balance" in data:
