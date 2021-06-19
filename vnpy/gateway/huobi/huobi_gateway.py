@@ -367,6 +367,12 @@ class HuobiRestApi(RestClient):
             if d["type"] == "spot":
                 self.account_id = d["id"]
                 self.gateway.write_log(f"账户代码{self.account_id}查询成功")
+            if d["type"] == "margin":
+                self.account_id = d["id"]
+                self.gateway.write_log(f"账户代码{self.account_id}查询成功")
+            if d["type"] == "super-margin":
+                self.account_id = d["id"]
+                self.gateway.write_log(f"账户代码{self.account_id}查询成功")
 
     def on_query_order(self, data: dict, request: Request) -> None:
         """"""
