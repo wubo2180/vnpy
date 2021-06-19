@@ -22,4 +22,4 @@ def main():
     qapp.exec()
 
 if __name__ == "__main__":
-    main()
+    main()###2
